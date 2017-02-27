@@ -14,6 +14,6 @@ if (! $error) {
     </head>
     <body>
         <h1>There was a problem</h1>
-        <p class="error"><?php echo $error; ?></p>  
+        <p class="error"><?php echo $error;?></p>  
     </body>
 </html>

@@ -4,6 +4,13 @@
 //http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
 
 include_once 'psl-config.php';
+include_once 'ChromePhp.php';
+
+function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
  
 function sec_session_start() {
     $session_name = 'sec_session_id';   // Set a custom session name
@@ -29,12 +36,13 @@ function sec_session_start() {
         $httponly);
  
     session_start();            // Start the PHP session 
-    session_regenerate_id(true);    // regenerated the session, delete the old one. 
+    session_regenerate_id(true);    // regenerated the session, delete the old one.
+	console_log($_SESSION['login_string']);
 }
 
 function login($email, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible. 
-    if ($stmt = $mysqli->prepare("SELECT id, cast(aes_decrypt(EmailAddress,'Team9password') as char), cast(aes_decrypt(Password,'Team9password') as char)
+    if ($stmt = $mysqli->prepare("SELECT id, EmailAddress, Password
         FROM loginCredentials
        WHERE EmailAddress = ?
         LIMIT 1")) {
@@ -72,6 +80,7 @@ function login($email, $password, $mysqli) {
                     $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', 
                               $db_password . $user_browser);
+					
                     // Login successful.
                     return true;
                 } else {
