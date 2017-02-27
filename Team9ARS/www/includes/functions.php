@@ -4,37 +4,36 @@
 //http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
 
 include_once 'psl-config.php';
- 
+include_once 'ChromePhp.php';
+
+function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+
 function sec_session_start() {
-    $session_name = 'sec_session_id';   // Set a custom session name
-    /*Sets the session name. 
-     *This must come before session_set_cookie_params due to an undocumented bug/feature in PHP. 
-     */
-    session_name($session_name);
- 
-    $secure = true;
+    $session_name = 'sec_session_id';   // Set a custom session name 
+    $secure = SECURE;
     // This stops JavaScript being able to access the session id.
     $httponly = true;
     // Forces sessions to only use cookies.
     if (ini_set('session.use_only_cookies', 1) === FALSE) {
-        header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
+        header("Location: ../pages/error.php?err=Could not initiate a safe session (ini_set)");
         exit();
     }
     // Gets current cookies params.
     $cookieParams = session_get_cookie_params();
-    session_set_cookie_params($cookieParams["lifetime"],
-        $cookieParams["path"], 
-        $cookieParams["domain"], 
-        $secure,
-        $httponly);
- 
+    session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
+    // Sets the session name to the one set above.
+    session_name($session_name);
     session_start();            // Start the PHP session 
-    session_regenerate_id(true);    // regenerated the session, delete the old one. 
+    session_regenerate_id();    // regenerated the session, delete the old one. 
 }
 
 function login($email, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible. 
-    if ($stmt = $mysqli->prepare("SELECT id, cast(aes_decrypt(EmailAddress,'Team9password') as char), cast(aes_decrypt(Password,'Team9password') as char)
+    if ($stmt = $mysqli->prepare("SELECT id, EmailAddress, Password
         FROM loginCredentials
        WHERE EmailAddress = ?
         LIMIT 1")) {
@@ -65,13 +64,10 @@ function login($email, $password, $mysqli) {
                     // XSS protection as we might print this value
                     $user_id = preg_replace("/[^0-9]+/", "", $user_id);
                     $_SESSION['user_id'] = $user_id;
-                    // XSS protection as we might print this value
-                    $username = preg_replace("/[^a-zA-Z0-9_\-]+/", 
-                                                                "", 
-                                                                $username);
                     $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', 
                               $db_password . $user_browser);
+					
                     // Login successful.
                     return true;
                 } else {

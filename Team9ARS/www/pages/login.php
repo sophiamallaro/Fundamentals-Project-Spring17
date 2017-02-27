@@ -24,7 +24,8 @@ if (login_check($mysqli) == true) {
         if (isset($_GET['error'])) {
             echo '<p class="error">Error Logging In!</p>';
         }
-        ?> 
+        ?>
+		<a href="../index.html">Home</a>
         <form action="../includes/process_login.php" method="post" name="login_form">                      
             Email: <input type="text" name="email" />
             Password: <input type="password" 
@@ -39,7 +40,7 @@ if (login_check($mysqli) == true) {
         if (login_check($mysqli) == true) {
                         echo '<p>Currently logged ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
  
-            echo '<p>Do you want to change user? <a href="includes/logout.php">Log out</a>.</p>';
+            echo '<p>Do you want to change user? <a href="logout.php">Log out</a>.</p>';
         } else {
                         echo '<p>Currently logged ' . $logged . '.</p>';
                         echo "<p>If you don't have a login, please <a href='register.php'>register</a></p>";
