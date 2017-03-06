@@ -14,6 +14,7 @@ def create_message(to, subject, message_text):
     :param to: Email address of recipient
     :param subject: Subject of email
     :param message_text: Text of email message
+
     :return: Base64url encoded email object
     """
 
@@ -26,6 +27,12 @@ def create_message(to, subject, message_text):
 
 
 def send_message(message):
+    """
+    Sends message using gmail smtp
+
+    :param message:
+    :return:
+    """
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login(ACCOUNT_ADR, ACCOUNT_PWD)
