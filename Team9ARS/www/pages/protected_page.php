@@ -7,6 +7,9 @@ sec_session_start();
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            body {background-color: powderblue;text-align: center;line-height: 1.8;}
+        </style>
         <meta charset="UTF-8">
         <title>Secure Login: Protected Page</title>
         <link rel="stylesheet" href="../styles/main.css" />
@@ -20,11 +23,12 @@ sec_session_start();
                 the user, so pages will be able to determine the type of user
                 authorised to access the page.
             </p>
-            <p>Return to <a href="login.php">login page</a></p>
+            <p>Return to <a href="..\index.html">Home</a></p>
         <?php else : ?>
             <p>
                 <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
             </p>
         <?php endif; ?>
+        <a href="myFlights.html">View My Flights</a>
     </body>
 </html>

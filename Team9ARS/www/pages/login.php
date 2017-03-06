@@ -13,11 +13,15 @@ if (login_check($mysqli) == true) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <style>
+            body {background-color: powderblue;text-align: center;line-height: 1.8;}
+        </style>
 		<meta charset="UTF-8">
         <title>Secure Login: Log In</title>
         <link rel="stylesheet" href="../styles/main.css" />
         <script type="text/JavaScript" src="../js/sha512.js"></script> 
-        <script type="text/JavaScript" src="../js/forms.js"></script> 
+        <script type="text/JavaScript" src="../js/forms.js"></script>
+        <div style='float: right;'><a href="../index.html">Home</a></div>
     </head>
     <body>
         <?php
@@ -25,12 +29,12 @@ if (login_check($mysqli) == true) {
             echo '<p class="error">Error Logging In!</p>';
         }
         ?>
-		<a href="../../index.html">Home</a>
+        <h1>Welcome Back!</h1>
         <form action="../includes/process_login.php" method="post" name="login_form">                      
-            Email: <input type="text" name="email" />
+            Email: <input type="text" name="email" /><br>
             Password: <input type="password" 
                              name="password" 
-                             id="password"/>
+                             id="password"/><br>
             <input type="button" 
                    value="Login" 
                    onclick="formhash(this.form, this.form.password);" /> 

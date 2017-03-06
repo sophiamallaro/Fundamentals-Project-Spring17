@@ -5,16 +5,19 @@ include_once '../includes/functions.php';
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            body {background-color: powderblue;line-height: 1.8;}
+        </style>
         <meta charset="UTF-8">
         <title>Secure Login: Registration Form</title>
         <script type="text/JavaScript" src="../js/sha512.js"></script> 
         <script type="text/JavaScript" src="../js/forms.js"></script>
         <link rel="stylesheet" href="../styles/main.css" />
+        <div style='float: right;'><a href="../index.html">Home</a></div>
     </head>
     <body>
         <!-- Registration form to be output if the POST variables are not
         set or if the registration script caused an error. -->
-        <a href="../../index.html">Home</a>
 		<h1>Register with us</h1>
         <?php
         if (!empty($error_msg)) {
