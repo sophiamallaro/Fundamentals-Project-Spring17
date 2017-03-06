@@ -14,7 +14,7 @@ include_once '../includes/functions.php';
     <body>
         <!-- Registration form to be output if the POST variables are not
         set or if the registration script caused an error. -->
-        <a href="../index.html">Home</a>
+        <a href="../../index.html">Home</a>
 		<h1>Register with us</h1>
         <?php
         if (!empty($error_msg)) {
