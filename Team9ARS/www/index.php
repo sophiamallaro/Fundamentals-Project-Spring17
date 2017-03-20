@@ -18,7 +18,7 @@ sec_session_start();
 		echo "<div style='float: right;'><a href='/pages/login.php'>Log In</a></div><br>";
 	} 		
 	if (login_check($mysqli) == true && $_SESSION['accountType'] == 'Admin') {
-		echo "<div style='float: right;'><a href='/pages/adminTools.html'>Administrator Tools</a></div><br>";
+		echo "<div style='float: right;'><a href='/pages/adminTools.php'>Administrator Tools</a></div><br>";
 	}
 	if (login_check($mysqli) == true && $_SESSION['accountType'] == 'Manager') {
 		echo "<div style='float: right;'><a href='/pages/managerTools.html'>Manager Tools</a></div><br>";

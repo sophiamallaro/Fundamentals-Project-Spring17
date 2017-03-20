@@ -12,7 +12,7 @@ if (isset($_POST['email'], $_POST['p'])) {
  
 	if ($loginSuccess == true && $_SESSION['accountType'] == 'Admin'){
 		//admin login
-		header('Location: ../pages/adminTools.html');
+		header('Location: ../pages/adminTools.php');
 		exit();
 	}
     else if ($loginSuccess == true && $_SESSION['accountType'] == 'Manager') {
