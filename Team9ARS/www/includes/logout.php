@@ -18,5 +18,5 @@ setcookie(session_name(),
  
 // Destroy session 
 session_destroy();
-header('Location: ../index.html');
+header('Location: ../index.php');
 ?>

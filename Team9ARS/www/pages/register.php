@@ -13,7 +13,7 @@ include_once '../includes/functions.php';
         <script type="text/JavaScript" src="../js/sha512.js"></script> 
         <script type="text/JavaScript" src="../js/forms.js"></script>
         <link rel="stylesheet" href="../styles/main.css" />
-        <div style='float: right;'><a href="../index.html">Home</a></div>
+        <div style='float: right;'><a href="../index.php">Home</a></div>
     </head>
     <body>
         <!-- Registration form to be output if the POST variables are not
