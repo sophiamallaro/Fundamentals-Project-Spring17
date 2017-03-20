@@ -1,5 +1,5 @@
 <?php
-include_once '../includes/register.inc.php';
+include_once '../includes/register.inc.employee.php';
 include_once '../includes/functions.php';
 ?>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ include_once '../includes/functions.php';
             body {background-color: powderblue;line-height: 1.8;}
         </style>
         <meta charset="UTF-8">
-        <title>Secure Login: Registration Form</title>
+        <title>Secure Login: Employee Registration Form</title>
         <script type="text/JavaScript" src="../js/sha512.js"></script> 
         <script type="text/JavaScript" src="../js/forms.js"></script>
         <link rel="stylesheet" href="../styles/main.css" />
@@ -18,7 +18,7 @@ include_once '../includes/functions.php';
     <body>
         <!-- Registration form to be output if the POST variables are not
         set or if the registration script caused an error. -->
-		<h1>Register with us</h1>
+		<h1>Register a new Employee</h1>
         <?php
         if (!empty($error_msg)) {
             echo $error_msg;
@@ -41,6 +41,8 @@ include_once '../includes/functions.php';
                 method="post" 
                 name="registration_form">
             Email: <input type="text" name="email" id="email" /><br>
+			Account Type: <input type="radio" name="type" id="type" value="Manager" />Manager
+						  <input type="radio" name="type" id="type" value="Admin" />Administrator<br>
             Password: <input type="password"
                              name="password" 
                              id="password"/><br>
@@ -49,11 +51,12 @@ include_once '../includes/functions.php';
                                      id="confirmpwd" /><br>
             <input type="button" 
                    value="Register" 
-                   onclick="return regformhash(this.form,
+                   onclick="return regformhashemployee(this.form,
                                    this.form.email,
+								   this.form.type,
                                    this.form.password,
                                    this.form.confirmpwd);" /> 
         </form>
-        <p>Return to the <a href="login.php">login page</a>.</p>
+        <p><a href="/pages/adminTools.php">Return to admin tools</a></p>
     </body>
 </html>

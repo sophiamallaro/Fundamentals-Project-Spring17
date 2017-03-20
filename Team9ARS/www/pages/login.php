@@ -21,7 +21,7 @@ if (login_check($mysqli) == true) {
         <link rel="stylesheet" href="../styles/main.css" />
         <script type="text/JavaScript" src="../js/sha512.js"></script> 
         <script type="text/JavaScript" src="../js/forms.js"></script>
-        <div style='float: right;'><a href="../index.html">Home</a></div>
+        <div style='float: right;'><a href="../index.php">Home</a></div>
     </head>
     <body>
         <?php
