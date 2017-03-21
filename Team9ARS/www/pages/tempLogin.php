@@ -42,7 +42,7 @@ if (login_check($mysqli) == true) {
 							 id="confPassword"/><br>
             <input type="button" 
                    value="Change Password" 
-                   onclick="formhash(this.form, this.form.newPassword);" /> 
+                   onclick="formhashemployee(this.form, this.form.newPassword,this.form.confPassword);" /> 
         </form>
     </body>
 </html>
