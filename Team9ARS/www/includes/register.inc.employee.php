@@ -63,12 +63,12 @@ if (isset($_POST['email'], $_POST['p'])) {
                 header('Location: ../error.php?err=Registration failure: INSERT');
             }
         }
-		$message = "python ..\python\sendEmail.py \"{$email}\" \"Welcome to Team9ARS!\" \"Thank you for registering an account. You are now able to book flights. Here is your Username: {$email}. Don't forget your password!\"";
+		$message = "python ..\python\sendEmail.py \"{$email}\" \"Welcome to Team9ARS!\" \"The Admin team has registered your account. You can set a permanent password at this URL: localhost/pages/tempLogin.php   Here is your Username: {$email}. Your Temporary password is:  Temp9password\"";
 		//console_log($message);
 		
 		// Windows usage only??
 		exec($message);
-        header('Location: ./register_success.php');
+        header('Location: ./register_success_employee.php');
     }
 }
 ?>

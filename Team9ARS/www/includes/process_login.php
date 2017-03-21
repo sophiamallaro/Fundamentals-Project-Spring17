@@ -12,12 +12,22 @@ if (isset($_POST['email'], $_POST['p'])) {
  
 	if ($loginSuccess == true && $_SESSION['accountType'] == 'Admin'){
 		//admin login
-		header('Location: ../pages/adminTools.php');
+		if ($_SESSION['tempPassword'] == 0){
+			header('Location: ../pages/adminTools.php');
+		}
+		else {
+			header('Location: ../pages/tempLogin.php');
+		}
 		exit();
 	}
     else if ($loginSuccess == true && $_SESSION['accountType'] == 'Manager') {
-        //manager login 
-        header('Location: ../pages/managerTools.html');
+        //manager login
+		if ($_SESSION['tempPassword'] == 0){
+			header('Location: ../pages/managerTools.html');
+		}
+		else{
+			header('Location: ../pages/tempLogin.php');
+		}
 		exit();
     } 
 	else if($loginSuccess == true){
