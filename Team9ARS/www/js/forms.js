@@ -14,6 +14,38 @@ function formhash(form, password) {
     // Finally submit the form. 
     form.submit();
 }
+
+function formhashemployee(form, password, conf) {
+	
+	if (password.value != conf.value) {
+        alert('Your password and confirmation do not match. Please try again');
+        form.password.focus();
+        return false;
+    }
+	
+	var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
+    if (!re.test(password.value)) {
+        alert('Passwords must contain at least one number, one lowercase and one uppercase letter.  Please try again');
+        return false;
+    }
+	
+    // Create a new element input, this will be our hashed password field. 
+    var p = document.createElement("input");
+ 
+    // Add the new element to our form. 
+    form.appendChild(p);
+    p.name = "p";
+    p.type = "hidden";
+    p.value = hex_sha512(password.value);
+ 
+    // Make sure the plaintext password doesn't get sent. 
+    password.value = "";
+ 
+    // Finally submit the form. 
+    form.submit();
+	
+
+}
  
 function regformhash(form, email, password, conf) {
      // Check each field has a value
@@ -78,7 +110,7 @@ function regformhashemployee(form, email, type, password, conf) {
 	 
     if (  email.value == ''     || 
 		  type.value == ''      ||
-          password.value == ''  || 
+          password == ''  || 
           conf.value == '') {
  
         alert('You must provide all the requested details. Please try again');
@@ -89,31 +121,6 @@ function regformhashemployee(form, email, type, password, conf) {
  
     re = /^\w+$/; 
  
-    // Check that the password is sufficiently long (min 6 chars)
-    // The check is duplicated below, but this is included to give more
-    // specific guidance to the user
-    if (password.value.length < 6) {
-        alert('Passwords must be at least 6 characters long.  Please try again');
-        form.password.focus();
-        return false;
-    }
- 
-    // At least one number, one lowercase and one uppercase letter 
-    // At least six characters 
- 
-    var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
-    if (!re.test(password.value)) {
-        alert('Passwords must contain at least one number, one lowercase and one uppercase letter.  Please try again');
-        return false;
-    }
- 
-    // Check password and confirmation are the same
-    if (password.value != conf.value) {
-        alert('Your password and confirmation do not match. Please try again');
-        form.password.focus();
-        return false;
-    }
- 
     // Create a new element input, this will be our hashed password field. 
     var p = document.createElement("input");
  
@@ -121,7 +128,7 @@ function regformhashemployee(form, email, type, password, conf) {
     form.appendChild(p);
     p.name = "p";
     p.type = "hidden";
-    p.value = hex_sha512(password.value);
+    p.value = hex_sha512(password);
  
     // Make sure the plaintext password doesn't get sent. 
     password.value = "";

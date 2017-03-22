@@ -43,19 +43,13 @@ include_once '../includes/functions.php';
             Email: <input type="text" name="email" id="email" /><br>
 			Account Type: <input type="radio" name="type" id="type" value="Manager" />Manager
 						  <input type="radio" name="type" id="type" value="Admin" />Administrator<br>
-            Password: <input type="password"
-                             name="password" 
-                             id="password"/><br>
-            Confirm password: <input type="password" 
-                                     name="confirmpwd" 
-                                     id="confirmpwd" /><br>
             <input type="button" 
                    value="Register" 
                    onclick="return regformhashemployee(this.form,
                                    this.form.email,
 								   this.form.type,
-                                   this.form.password,
-                                   this.form.confirmpwd);" /> 
+                                   'Temp9password',
+                                   'Temp9password');" /> 
         </form>
         <p><a href="/pages/adminTools.php">Return to admin tools</a></p>
     </body>
