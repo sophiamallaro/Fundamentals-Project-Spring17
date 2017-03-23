@@ -24,7 +24,6 @@
         async defer></script>
 <script>
     var map;
-    var departMkr, destMkr, layMkr;
     var flightPath;
     var ord = {lat: 41.9742, lng: -87.9072};
     var lax = {lat: 33.9416, lng: -118.4085};
@@ -41,26 +40,24 @@
             path: flightPlanCoordinates,
             geodesic: true,
             strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
+            strokeOpacity: 0.5,
             strokeWeight: 4
         });
 
-        departMkr = new google.maps.Marker({
-            position: cid,
-            map: map
-        });
-
-        layMkr = new google.maps.Marker({
-            position: ord,
-            map: map
-        });
-
-        destMkr = new google.maps.Marker({
-            position: lax,
-            map: map
-        });
+        addMkr(cid, map, '1');
+        addMkr(ord, map, '2');
+        addMkr(lax, map, '3');
 
         flightPath.setMap(map);
+    }
+
+    // Function adds Marker to map with label
+    function addMkr(location, map, name) {
+        var mkr = new google.maps.Marker({
+            position: location,
+            label: name,
+            map: map
+        });
     }
 
     // Function calculates mid point between airports in array
