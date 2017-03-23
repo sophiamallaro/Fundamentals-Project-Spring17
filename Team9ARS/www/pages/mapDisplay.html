@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map Testing</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5e6RSabo6a5ccHPrfIbfqgxwK2PX_XGU&callback=initMap"
+        async defer></script>
+<script>
+    var map;
+    var departMkr;
+    var destMkr;
+    var ord = {lat: 41.9742, lng: -87.9072};
+    var lax = {lat: 33.9416, lng: -118.4085};
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: ord,
+            zoom: 5
+        });
+
+        departMkr = new google.maps.Marker({
+            position: ord,
+            map: map
+        });
+
+        destMkr = new google.maps.Marker({
+            position: lax,
+            map: map
+        });
+    }
+
+    function calcCenter(mkr1, mkr2) {
+        var latMid = mkr1
+    }
+</script>
+</body>
+</html>
