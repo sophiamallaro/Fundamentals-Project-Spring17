@@ -26,15 +26,32 @@
     var map;
     var departMkr;
     var destMkr;
+    var flightPath;
     var ord = {lat: 41.9742, lng: -87.9072};
     var lax = {lat: 33.9416, lng: -118.4085};
+    var cid = {lat: 41.8864, lng: -91.70697};
+    var flightPlanCoordinates = [cid, ord, lax];
+    var center = calcCenter(ord, lax);
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: ord,
+            center: center,
             zoom: 5
         });
 
+        flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 4
+        });
+
         departMkr = new google.maps.Marker({
+            position: cid,
+            map: map
+        });
+
+        layMkr = new google.maps.Marker({
             position: ord,
             map: map
         });
@@ -43,10 +60,15 @@
             position: lax,
             map: map
         });
+
+        flightPath.setMap(map);
     }
 
     function calcCenter(mkr1, mkr2) {
-        var latMid = mkr1
+        var latMid = (mkr1['lat']+mkr2['lat'])/2;
+        var lngMid = (mkr1['lng'] + mkr2['lng'])/2;
+        var midPt = {lat: latMid, lng: lngMid};
+        return midPt;
     }
 </script>
 </body>
