@@ -4,8 +4,6 @@ include_once 'functions.php';
 
 sec_session_start(); // Our custom secure way of starting a PHP session.
 
-$number = $_POST['number'];
-$aircraft = $_POST['aircraft'];
 $departingL = $_POST['departing airport'];
 $arrivingL = $_POST['arrival airport'];
 $departingD = $_POST['departure date'];
