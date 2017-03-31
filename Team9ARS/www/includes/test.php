@@ -11,6 +11,6 @@ $stmt = $mysqli->prepare("INSERT INTO test (Fname,Lname) VALUES (?,?)");
 $stmt->bind_param('si', $Fname, $Lname);
 $stmt->execute();
 
-header('Location: ../pages/addFlight.html');
+header('Location: ../pages/test.html');
 exit();
  ?>
