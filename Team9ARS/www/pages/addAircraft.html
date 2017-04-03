@@ -10,7 +10,8 @@
 </head>
 <body>
     <h1>Add an aircraft</h1>
-	<form action="../includes/process_aircraftAdd.php" method="post" name="aircraft_form">
+	<form action="../includes/process_aircraftAdd.php" method="post" 
+	name="aircraft_form" onsubmit="return validateForm()"id="aircraft_form">
             Model: <input type="text" name="model" /><br>
             Capacity: <input type="number" 
                              name="capacity"
@@ -19,6 +20,22 @@
             <input type="submit" 
                    value="Apply" /> 
     </form>
-	
+	<script>
+		function validateForm(){
+			var x = document.forms["aircraft_form"]["model"].value;
+			var y = document.forms["aircraft_form"]["capacity"].value;
+				if (x == "") {
+					alert("Model must be filled in");
+					return false;
+				}
+				else if (y == "") {
+					alert("Capacity must be filled in");
+					return false;
+				}
+				else {
+					alert("Added aircraft to the database");
+				}
+		}
+	</script>
 </body>
 </html>
