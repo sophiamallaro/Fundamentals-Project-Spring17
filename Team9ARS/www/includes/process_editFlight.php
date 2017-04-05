@@ -6,7 +6,6 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
 
 ini_set("date.timezone", "America/New_York");
 
-
 $number = $_POST['number'];
 $source = $_POST['source'];
 $destination = $_POST['destination'];
@@ -15,6 +14,7 @@ $insertadate = date('Y-m-d', strtotime($_POST['adate']));
 $insertdtime = $_POST['dtime'];
 $insertatime = $_POST['atime'];
 $frequency = $_POST['frequency'];
+
 $fields = array('number', 'source', 'destination', 'ddate', 'adate', 'dtime');
 $error = false;
 $error_msg = "";
@@ -37,10 +37,29 @@ if($insertddate > $insertadate) {
          $error_msg .= '<p class="error">Arrival cannot occur before departure.</p>';
     }
 }
-if(empty($error_msg)) {
-    $stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssi', $number, $source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency);
+$prep_stmt = "SELECT * FROM flight WHERE number = ? LIMIT 1";
+$stmt = $mysqli->prepare($prep_stmt);
+
+// check if such a flight exists
+if ($stmt) {
+    $stmt->bind_param('s', $number);
     $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows == 0) {
+        // A user with this email address already exists
+        $error_msg .= '<p class="error">No flight with this number exists.</p>';
+                        $stmt->close();
+    }
+} else {
+    $error_msg .= '<p class="error">Database error Line 39</p>';
+         $stmt->close();
+}
+
+if(empty($error_msg)) {
+    $stmt = $mysqli->prepare("UPDATE flight SET source = ?, destination = ?, ddate = ?, adate = ?, dtime = ?, atime = ?, frequency = ? WHERE number = ?");
+    $stmt->bind_param('ssssssis',$source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $number);
+    $stmt->execute();    // Execute the prepared sql.
     header('Location: ../pages/adminTools.html');
     exit();
 }

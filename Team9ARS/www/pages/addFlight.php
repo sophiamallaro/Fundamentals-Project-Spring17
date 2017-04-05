@@ -1,3 +1,7 @@
+<?php
+include_once '../includes/register.inc.employee.php';
+include_once '../includes/functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,11 @@
 </head>
 <body>
 	<h1>Add A Flight</h1>
+	<?php
+        if (!empty($error_msg)) {
+            echo $error_msg;
+        }
+    ?>
     <form action="../includes/process_addFlight.php" method="post" name="test_form">
         Flight Number: <input type="text" name="number"><br>
 	Source City: <input type="text" name="source"><br>
@@ -24,6 +33,9 @@
       		<option value="2">Monthly</option>
 	</select><br>
         <input type="submit" value="Add"><br>
-    </form>
+
+	</form>
+
+
 </body>
 </html>
