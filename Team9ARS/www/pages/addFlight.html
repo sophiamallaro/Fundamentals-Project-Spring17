@@ -5,22 +5,25 @@
         body {background-color: powderblue;text-align: center;line-height: 1.4;}
     </style>
     <meta charset="UTF-8">
-    <title>Add a flight</title>
+    <title>Create Add Flight</title>
     <div style='float: right;'><a href="../index.php">Home</a></div>
 </head>
 <body>
-    <h1>Add an aircraft</h1>
-
-    <form action="../includes/process_flightAdd.php">
+	<h1>Add A Flight</h1>
+    <form action="../includes/process_addFlight.php" method="post" name="test_form">
         Flight Number: <input type="text" name="number"><br>
-        Aircraft: <input type="text" name = "aircraft"><br>
-        Departure Airport: <input type="text" name="departingL"><br>
-        Arrival Airport: <input type="text" name="arrivingL"><br>
-        Departure Date: <input type="date" name="departingD"><br>
-        Departure Time:<input type="time" name="departingT"><br>
-        Arrival Date: <input type="date" name="arrivingD"><br>
-        Arrival Time:<input type="time" name="arrivingT"><br>
-        <input type="submit" value="Add Flight"><br>
+	Source City: <input type="text" name="source"><br>
+	Destination City: <input type="text" name="destination"><br>
+	Departure Date: <input type="date" name="ddate"><br>
+	Arrival Date: <input type="date" name="adate"><br>
+	Departure Time: <input type="time" name="dtime"><br>
+	Arrival Time: <input type="time" name="atime"><br>
+	Frequency: <select name="frequency">
+      		<option value="0">One Time</option>
+      		<option value="1">Weekly</option>
+      		<option value="2">Monthly</option>
+	</select><br>
+        <input type="submit" value="Add"><br>
     </form>
-
 </body>
+</html>
