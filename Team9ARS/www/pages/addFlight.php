@@ -11,6 +11,7 @@ include_once '../includes/functions.php';
     <meta charset="UTF-8">
     <title>Create Add Flight</title>
     <div style='float: right;'><a href="../index.php">Home</a></div>
+    <div style='float: left;'><a href="adminTools.html">Back</a></div>
 </head>
 <body>
 <h1>Add A Flight</h1>
@@ -45,8 +46,8 @@ include_once '../includes/functions.php';
     <option value="1">Weekly</option>
     <option value="2">Monthly</option>
     </select><br>
-    First Class Price: <input type="integer" name="fcPrice"><br>
-    Economy Price: <input type="integer" name="ePrice"><br>
+    First Class Price: <input type="number" name="fcPrice"><br>
+    Economy Price: <input type="number" name="ePrice"><br>
     <input type="submit" value="Add"><br>
 
 </form>

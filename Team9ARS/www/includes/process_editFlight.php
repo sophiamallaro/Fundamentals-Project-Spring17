@@ -63,6 +63,9 @@ if(empty($error_msg)) {
     $stmt->execute();    // Execute the prepared sql.
     header('Location: ../pages/adminTools.html');
     exit();
+} else {
+    header('Location: ../pages/editFlight.html');
+    exit();
 }
 
  ?>

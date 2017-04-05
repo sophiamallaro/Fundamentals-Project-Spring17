@@ -23,17 +23,17 @@ $error_msg = "";
 
 foreach($fields AS $fieldname) {
   if(!isset($_POST[$fieldname]) || empty($_POST[$fieldname])) {
-   $error_msg .= '<p class="error">Invalid Departure Airport</p>';
+    $error_msg .= '<p class="error">Error: Incomplete Form</p>';
  }
 }
 if ($source == $destination ) {
-    $error_msg .= '<p class="error">Departure and destination airports cannot be the same. </p>';
+    $error_msg .= '<p class="error">Error: Source and Destination cannot be the same.</p>';
 }
 if($insertddate > $insertadate) {
-    $error_msg .= '<p class="error">Arrival cannot occur before departure.</p>';
+    $error_msg .= '<p class="error">Error: Invalid Date/Time</p>';
 } else if($insertddate == $insertadate) {
     if($insertdtime > $insertatime) {
-         $error_msg .= '<p class="error">Arrival cannot occur before departure.</p>';
+        $error_msg .= '<p class="error">Error: Invalid Date/Time</p>';
     }
 }
 if(empty($error_msg)) {
@@ -42,6 +42,9 @@ if(empty($error_msg)) {
     $stmt->execute();
     header('Location: ../pages/adminTools.html');
     exit();
+} else {
+    header('Location: ../pages/addFlight.php');
+        exit();
 }
 
 ?>
