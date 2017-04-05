@@ -14,8 +14,9 @@ $insertadate = date('Y-m-d', strtotime($_POST['adate']));
 $insertdtime = $_POST['dtime'];
 $insertatime = $_POST['atime'];
 $frequency = $_POST['frequency'];
-
-$fields = array('number', 'source', 'destination', 'ddate', 'adate', 'dtime');
+$fcPrice = $_POST['fcPrice'];
+$ePrice = $_POST['ePrice'];
+$fields = array('number', 'source', 'destination', 'ddate', 'adate', 'dtime', 'fcPrice', 'ePrice');
 $error = false;
 $error_msg = "";
 
@@ -57,8 +58,8 @@ if ($stmt) {
 }
 
 if(empty($error_msg)) {
-    $stmt = $mysqli->prepare("UPDATE flight SET source = ?, destination = ?, ddate = ?, adate = ?, dtime = ?, atime = ?, frequency = ? WHERE number = ?");
-    $stmt->bind_param('ssssssis',$source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $number);
+    $stmt = $mysqli->prepare("UPDATE flight SET source = ?, destination = ?, ddate = ?, adate = ?, dtime = ?, atime = ?, frequency = ?, fcPrice = ?, ePrice = ? WHERE number = ?");
+    $stmt->bind_param('ssssssiiis',$source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $number);
     $stmt->execute();    // Execute the prepared sql.
     header('Location: ../pages/adminTools.html');
     exit();

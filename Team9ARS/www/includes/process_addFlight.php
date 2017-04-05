@@ -15,20 +15,19 @@ $insertadate = date('Y-m-d', strtotime($_POST['adate']));
 $insertdtime = $_POST['dtime'];
 $insertatime = $_POST['atime'];
 $frequency = $_POST['frequency'];
-$fields = array('number', 'source', 'destination', 'ddate', 'adate', 'dtime');
+$fcPrice = $_POST['fcPrice'];
+$ePrice = $_POST['ePrice'];
+$fields = array('number', 'source', 'destination', 'ddate', 'adate', 'dtime', 'fcPrice', 'ePrice');
 $error = false;
 $error_msg = "";
 
-foreach($fields AS $fieldname) { //Loop trough each field
+foreach($fields AS $fieldname) {
   if(!isset($_POST[$fieldname]) || empty($_POST[$fieldname])) {
    $error_msg .= '<p class="error">Invalid Departure Airport</p>';
  }
 }
-if (strlen($source) != 3) {
-    $error_msg .= '<p class="error">Invalid Departure Airport</p>';
-}
-if (strlen($destination) != 3) {
-    $error_msg .= '<p class="error">Invalid Arrival Airport</p>';
+if ($source == $destination ) {
+    $error_msg .= '<p class="error">Departure and destination airports cannot be the same. </p>';
 }
 if($insertddate > $insertadate) {
     $error_msg .= '<p class="error">Arrival cannot occur before departure.</p>';
@@ -38,11 +37,11 @@ if($insertddate > $insertadate) {
     }
 }
 if(empty($error_msg)) {
-    $stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssi', $number, $source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency);
+    $stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssiii', $number, $source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice);
     $stmt->execute();
     header('Location: ../pages/adminTools.html');
     exit();
 }
 
- ?>
+?>

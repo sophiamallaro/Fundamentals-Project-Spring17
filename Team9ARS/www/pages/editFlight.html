@@ -12,8 +12,20 @@
 <h1>Add A Flight</h1>
 <form action="../includes/process_editFlight.php" method="post" name="test_form">
     Flight Number: <input type="text" name="number"><br>
-    Source City: <input type="text" name="source"><br>
-    Destination City: <input type="text" name="destination"><br>
+    Departure City: <select name="source">
+    <option value="ATL">ATL</option>
+    <option value="CID">CID</option>
+    <option value="JFK">JFK</option>
+    <option value="ORD">ORD</option>
+    <option value="SFO">SFO</option>
+    </select><br>
+    Arrival City: <select name="destination">
+    <option value="ATL">ATL</option>
+    <option value="CID">CID</option>
+    <option value="JFK">JFK</option>
+    <option value="ORD">ORD</option>
+    <option value="SFO">SFO</option>
+    </select><br>
     Departure Date: <input type="date" name="ddate"><br>
     Arrival Date: <input type="date" name="adate"><br>
     Departure Time: <input type="time" name="dtime"><br>
@@ -23,6 +35,8 @@
     <option value="1">Weekly</option>
     <option value="2">Monthly</option>
 </select><br>
+    First Class Price: <input type="integer" name="fcPrice"><br>
+    Economy Price: <input type="integer" name="ePrice"><br>
     <input type="submit" value="Update"><br>
 </form>
 </body>
