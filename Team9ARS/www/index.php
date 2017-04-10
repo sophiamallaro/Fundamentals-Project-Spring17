@@ -20,9 +20,12 @@ sec_session_start();
 	if (login_check($mysqli) == true && $_SESSION['accountType'] == 'Admin') {
 		echo "<div style='float: right;'><a href='/pages/adminTools.php'>Administrator Tools</a></div><br>";
 	}
-	if (login_check($mysqli) == true && $_SESSION['accountType'] == 'Manager') {
+	else if (login_check($mysqli) == true && $_SESSION['accountType'] == 'Manager') {
 		echo "<div style='float: right;'><a href='/pages/managerTools.html'>Manager Tools</a></div><br>";
     }
+	else{
+		echo "<div style='float: right;'><a href='pages/userInfo.html'>Account Information</a></div><br>";
+	}
 	if (login_check($mysqli) == true){
 		echo "<div style='float: right;'><a href='pages/logout.php'>Log out</a></div><br>";
 	} 
