@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {background-color: powderblue;text-align: center;line-height: 1.4;}
+    </style>
+    <meta charset="UTF-8">
+    <title>Account Management</title>
+    <div style='float: right;'><a href="../index.php">Home</a></div>
+</head>
+
+<body>
+    <h1>Flight Search</h1>
+    <form action="flightSearch.php" method="post" name="test_form">
+    Departure City: <select name="source">
+        <option value="ATL">ATL</option>
+        <option value="CID">CID</option>
+        <option value="JFK">JFK</option>
+        <option value="ORD">ORD</option>
+        <option value="SFO">SFO</option>
+    </select>
+    Arrival City: <select name="destination">
+        <option value="ATL">ATL</option>
+        <option value="CID">CID</option>
+        <option value="JFK">JFK</option>
+        <option value="ORD">ORD</option>
+        <option value="SFO">SFO</option>
+    </select><br>
+    Departure Date: <input type="date" name="ddate">
+    Arrival Date: <input type="date" name="adate">
+    <input type="submit" value="Find Flights"><br>
+</body>
+
+</html>

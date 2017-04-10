@@ -1,6 +1,7 @@
 <?php
 include_once '../includes/register.inc.employee.php';
 include_once '../includes/functions.php';
+ini_set("date.timezone", "America/New_York");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,37 +14,52 @@ include_once '../includes/functions.php';
     <div style='float: right;'><a href="../index.php">Home</a></div>
 </head>
 <body>
-    <h1>Search Flights</h1>
+    <h1>Results</h1>
 
-	<form action="../includes/process_search.php" method="post"
+	<form action="booking.php" method="post"
 	name="aircraft_form" id="aircraft_form">
-
+    <table width="1000">
+    <tr>
+        <td>Flight Number</td>
+        <td>Departure Date</td>
+        <td>Arrival Date</td>
+        <td>Departure Time</td>
+        <td>Arrival Time</td>
+        <td>Economy Price</td>
+        <td>First Class Price</td>
+    </tr>
 	<?php
-		$stmt = $mysqli->query("SELECT * FROM flight");
-
-        if ($stmt->num_rows > 0) {
-            while($row = $stmt->fetch_assoc()) {
-
-                echo '<tr>';
-                '<td>'.$row['number'].'</td>';
-                '<td>'.$row['ddate'].'</td>';
-                '<td>'.$row['adate'].'</td>';
-                '<td>'.$row['dtime'].'</td>';
-                '<td>'.$row['atime'].'</td>';
-                '<td>'.$row['ePrice'].'</td>';
-                '<td>'.$row['fcPrice'].'</td>';
-
-                echo '</tr>';
-                }
-                       // echo "</select>";
+	    $source = $_POST['source'];
+	    $destination = $_POST['destination'];
+        $insertddate = date('Y-m-d', strtotime($_POST['ddate']));
+        $insertadate = date('Y-m-d', strtotime($_POST['adate']));
+        $instruction = "SELECT * FROM flight where source='".$source."' AND destination='".$destination."' AND ddate ='".$insertddate."' AND adate='".$insertadate."'";
+		$stmt = $mysqli->query($instruction);
+        if($stmt) {
+            if ($stmt->num_rows > 0) {
+                        while($row = $stmt->fetch_assoc()) {
+                            echo '<tr>';
+                            echo '<td>'.$row['number'].'</td>';
+                            echo '<td>'.$row['ddate'].'</td>';
+                            echo '<td>'.$row['adate'].'</td>';
+                            echo '<td>'.$row['dtime'].'</td>';
+                            echo '<td>'.$row['atime'].'</td>';
+                            echo '<td>'.$row['ePrice'].'</td>';
+                            echo '<td>'.$row['fcPrice'].'</td>';
+                            echo '</tr>';
+                        }
+                        // echo "</select>";
+            } else {
+                echo 'No Available Flights';
+            }
         } else {
-            echo 'I am not working.';
+                echo 'STATEMENT NOT PREPARING';
         }
 
 	?>
-            <input type="submit"
-                   value="Book" />
+	</table><br>
+	Flight Number: <input type="text" name="number" />
+    <input type="submit" value="Book" />
     </form>
-
 </body>
 </html>
