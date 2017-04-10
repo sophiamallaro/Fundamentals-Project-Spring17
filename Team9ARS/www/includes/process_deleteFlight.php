@@ -57,7 +57,7 @@ if ($stmt) {
 }
 
 if(empty($error_msg)) {
-    header('Location: ../pages/adminTools.html');
+    header('Location: ../pages/adminTools.php');
     exit();
 } else {
     header('Location: ../pages/deleteFlight.html');

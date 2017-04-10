@@ -2,6 +2,9 @@
 include_once '../includes/register.inc.employee.php';
 include_once '../includes/functions.php';
 ini_set("date.timezone", "America/New_York");
+include_once '../includes/db_connect.php';
+ 
+sec_session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

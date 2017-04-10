@@ -55,6 +55,11 @@ $statement = $mysqli->prepare("INSERT INTO reciepts (name, accountID, class, pri
 $statement->bind_param('sssi', $name, $identification, $class, $price);
 $statement->execute();
 
+$email = "" . htmlentities($_SESSION['username']) . "";
+
+$message = "python ..\python\sendEmail.py \"{$email}\" \"Your Receipt\" \"You paid $" . $price . " for a ticket in " . $class . ".\"";
+exec($message);
+
 header("Location: ../pages/purchases.php");
 exit();
  ?>

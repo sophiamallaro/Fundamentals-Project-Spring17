@@ -36,7 +36,7 @@ sec_session_start();
 <body>
     <div style="font-size: 250%"></div><h1>Iowa Air</h1></div>
     <span class="center"><img src="/styles/travel-industry-air.jpg"></span>
-    <div style="font-size:200%"><a href="/pages/searchResults.html">Search Flights</a></div>
+    <div style="font-size:200%"><a href="/pages/flightSearchCriteria.html">Search Flights</a></div>
 
 </body>
 

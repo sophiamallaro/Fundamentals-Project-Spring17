@@ -1,3 +1,9 @@
+<?php
+include_once '../includes/db_connect.php';
+include_once '../includes/functions.php';
+ 
+sec_session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +21,9 @@
         Flight Number: <input type="text" name="fname"><br>
         <a href="addFlight.php">Add Flight</a><br>
 		<a href="editFlight.html">Edit Flight</a><br>
-        <a href="">Cancel Flight</a><br>
+        <a href="deleteFlight.html">Cancel Flight</a><br>
         <a href="addAircraft.html">Add Aircraft</a><br>
 		<a href="cancelAircraft.php">Cancel Aircraft</a><br>
-        <a href="">View Passenger List</a><br>
         <a href="adminTools.php">Return to admin tools</a>
     </p>
 </body>

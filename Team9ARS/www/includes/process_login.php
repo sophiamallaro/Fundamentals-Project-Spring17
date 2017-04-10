@@ -31,7 +31,7 @@ if (isset($_POST['email'], $_POST['p'])) {
 		exit();
     } 
 	else if($loginSuccess == true){
-		header('Location: ../pages/protected_page.php');
+		header('Location: ../index.php');
 		exit();
 	}
 	else {

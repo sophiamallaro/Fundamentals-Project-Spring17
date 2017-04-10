@@ -28,6 +28,6 @@ sec_session_start();
                 <span class="error">You are not authorized to access this page.</span> Please <a href="login.php">login</a>.
             </p>
         <?php endif; ?>
-        <a href="myFlights.html">View My Flights</a>
+        <a href="myFlights.php">View My Flights</a>
     </body>
 </html>
