@@ -60,7 +60,7 @@ if (isset($_POST['email'], $_POST['p'])) {
  
         // Insert the new user into the database 
         if ($insert_stmt = $mysqli->prepare("INSERT INTO loginCredentials (EmailAddress, Password, tempPassword) VALUES (?, ?, ?)")) {
-            $insert_stmt->bind_param('ssi', $email, $password, 0);
+            $insert_stmt->bind_param('ssi', $email, $password, $tempVal=0);
             // Execute the prepared query.
             if (! $insert_stmt->execute()) {
                 header('Location: ../error.php?err=Registration failure: INSERT');

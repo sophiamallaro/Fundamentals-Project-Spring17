@@ -48,10 +48,29 @@ include_once '../includes/functions.php';
     </select><br>
     First Class Price: <input type="number" name="fcPrice"><br>
     Economy Price: <input type="number" name="ePrice"><br>
+	
+	<?php
+		$stmt = $mysqli->query("SELECT aircraftID, model FROM aircrafts");
+		
+		if ($stmt->num_rows > 0) {
+			// output data of each row
+			echo '<select name="aircraftID">';
+			
+			while($row = $stmt->fetch_assoc()) {
+				
+				echo '<option value="'.$row['aircraftID'].'">'.$row['aircraftID']." ".$row['model'].'</option>';
+				
+				//echo "Model: " . $row["model"]. "  -  Capacity: " . $row["capacity"]."<br>";
+			}
+			echo "</select>";
+		} else {
+			echo "0 results";
+		}
+	?><br>
+	
     <input type="submit" value="Add"><br>
 
 </form>
-
 
 </body>
 </html>

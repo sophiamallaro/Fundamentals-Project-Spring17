@@ -37,14 +37,14 @@ if($insertddate > $insertadate) {
     }
 }
 if(empty($error_msg)) {
-    $stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssssiii', $number, $source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice);
+	$aircraftID = $_POST['aircraftID'];
+    $stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice, aircraftID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssiiii', $number, $source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $aircraftID);
     $stmt->execute();
-    header('Location: ../pages/adminTools.html');
+    header('Location: ../pages/addFlight.php');
     exit();
 } else {
     header('Location: ../pages/addFlight.php');
         exit();
 }
-
 ?>
