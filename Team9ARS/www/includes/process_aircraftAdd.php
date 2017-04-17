@@ -5,10 +5,11 @@ include_once 'functions.php';
 sec_session_start(); // Our custom secure way of starting a PHP session.
 
 $model = $_POST['model'];
-$capacity = $_POST['capacity'];
+$econCapacity = $_POST['econCapacity'];
+$firstClassCapacity = $_POST['firstClassCapacity'];
 
-$stmt = $mysqli->prepare("INSERT INTO aircrafts (model, capacity) VALUES (?, ?)");
-$stmt->bind_param('si', $model, $capacity);
+$stmt = $mysqli->prepare("INSERT INTO aircrafts (model, econCapacity, firstClassCapacity) VALUES (?, ?, ?)");
+$stmt->bind_param('sii', $model, $econCapacity, $firstClassCapacity);
 $stmt->execute();
  
 header('Location: ../pages/addAircraft.html');

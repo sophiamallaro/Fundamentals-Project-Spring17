@@ -1,3 +1,9 @@
+<?php
+include_once '../includes/db_connect.php';
+include_once '../includes/functions.php';
+ 
+sec_session_start(); // Our custom secure way of starting a PHP session.
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +19,12 @@
 	<form action="../includes/process_aircraftAdd.php" method="post" 
 	name="aircraft_form" onsubmit="return validateForm()"id="aircraft_form">
             Model: <input type="text" name="model" /><br>
-            Capacity: <input type="number" 
-                             name="capacity"
+            Econony Capacity: <input type="number" 
+                             name="econCapacity"
+							 min="1"
+							 max="1000"/><br>
+			First Class Capacity: <input type="number" 
+                             name="firstClassCapacity"
 							 min="1"
 							 max="1000"/><br>
             <input type="submit" 
@@ -23,13 +33,18 @@
 	<script>
 		function validateForm(){
 			var x = document.forms["aircraft_form"]["model"].value;
-			var y = document.forms["aircraft_form"]["capacity"].value;
+			var y = document.forms["aircraft_form"]["econCapacity"].value;
+			var z = document.forms["aircraft_form"]["firstClassCapacity"].value;
 				if (x == "") {
 					alert("Model must be filled in");
 					return false;
 				}
 				else if (y == "") {
-					alert("Capacity must be filled in");
+					alert("Economy Capacity must be filled in");
+					return false;
+				}
+				else if (z == "") {
+					alert("First Class Capacity must be filled in");
 					return false;
 				}
 				else {

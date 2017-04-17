@@ -11,7 +11,7 @@ include_once '../includes/functions.php';
     <meta charset="UTF-8">
     <title>Create Add Flight</title>
     <div style='float: right;'><a href="../index.php">Home</a></div>
-    <div style='float: left;'><a href="adminTools.php">Back</a></div>
+    <div style='float: left;'><a href="flightManagement.html">Back</a></div>
 </head>
 <body>
 <h1>Add A Flight</h1>

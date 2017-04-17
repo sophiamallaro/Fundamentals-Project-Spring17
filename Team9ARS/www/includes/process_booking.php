@@ -36,15 +36,18 @@ $insertValue = 0;
  $sql = "SELECT fcPrice, ePrice FROM flight WHERE number ='".$flightNum."'";
     $insertValue = $mysqli->query($sql);
 
-
 if ($insertValue->num_rows > 0) {
 			// output data of each row
 			
 			while($row = $insertValue->fetch_assoc()) {
 				if($class == "Economy") {
 					$price = $row['ePrice'];
+					$updatesql = "UPDATE flight SET economy=economy+1 WHERE number ='".$flightNum."'";
+					$capacStatement = $mysqli->query($updatesql);		
 				} else {
 					$price = $row['fcPrice'];
+					$updatesql = "UPDATE flight SET firstClass=firstClass+1 WHERE number ='".$flightNum."'";
+					$capacStatement = $mysqli->query($updatesql);
 				}
 				
 				
