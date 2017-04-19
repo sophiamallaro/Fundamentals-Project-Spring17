@@ -42,7 +42,7 @@ def send_message(message):
 
 
 def main():
-    message = create_message('jason-ryan@uiowa.edu', 'SMTP Test', 'Test of SMTP Gmail access')
+    message = create_message('jason-ryan@uiowa.edu', 'SMTP Test', 'Test of SMTP Gmail access\nLine two of message')
     send_message(message)
 
 if __name__ == '__main__':
