@@ -7,6 +7,7 @@ from emailMessage import sendMessage
 from oauth2client.client import flow_from_clientsecrets
 from httplib2 import Http
 
+
 def main():
     flow = flow_from_clientsecrets('../../../client_secret.json',
                                    scope='https://mail.google.com',
@@ -22,7 +23,7 @@ def main():
 
     gmail_service = discovery.build('gmail', 'v1', http_auth)
 
-    email_text = "ars email test"
+    email_text = "ars email test\nline two"
     sender = "team9ars@gmail.com"
     to = "jason-ryan@uiowa.edu"
     subject = "Gmail API test"
