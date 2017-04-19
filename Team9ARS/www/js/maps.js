@@ -2,7 +2,7 @@
  * Created by jasonryan on 3/24/17.
  */
 
-var map;
+var map, flightPlan;
 var atl = {lat: 33.6407, lng: -84.4277};
 var cid = {lat: 41.8864, lng: -91.70697};
 var jfk = {lat: 40.6413, lng: -73.7781};
@@ -10,10 +10,7 @@ var ord = {lat: 41.9742, lng: -87.9072};
 var sfo = {lat: 37.7749, lng: -122.4194};
 
 var airports = {'atl':atl, 'cid':cid, 'jfk':jfk, 'ord':ord, 'sfo':sfo};
-var flightPlanCoordinates = generateFlightPlan(['cid', 'jfk']);
-var center = calcCenter(flightPlanCoordinates);
-center = {lat: 39.8282, lng: -98.5795};
-
+var center = {lat: 39.8282, lng: -98.5795};
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -22,8 +19,15 @@ function initMap() {
         mapTypeId: 'terrain'
     });
 
-    addMkrs(flightPlanCoordinates, map);
-    addFlightPath(flightPlanCoordinates, map, '#FF0000');
+    flightPlan = generateFlightPlan(['cid', 'jfk']);
+    //flightPlan = generateFlightPlan(trip);
+    addMkrs(flightPlan, map);
+    addFlightPath(flightPlan, map, '#FF0000');
+}
+
+function generateMap(locations, len) {
+    flightPlan = generateFlightPlan(locations);
+    initMap(flightPlan, len);
 }
 
 // Adds flight path to map based on flight plan
@@ -41,21 +45,22 @@ function addFlightPath(flightPlan, map, color) {
 }
 
 
-//Generates flight plan
+// Generates flight plan
 function generateFlightPlan(locations) {
-    var index, len;
+    var index;
     var flightPlanCoordinates = [];
-    for(index = 0, len = locations.length; index < len; ++index) {
+    for (index = 0; index < locations.length; ++index) {
         flightPlanCoordinates.push(airports[locations[index]]);
-    }
+     }
+    console.log(flightPlanCoordinates);
+    initMap(flightPlanCoordinates, 2);
     return flightPlanCoordinates;
 }
 
 // Function adds Marker to map with label
 function addMkrs(locations, map) {
-    var mkr;
-    var index, len;
-    for(index = 0, len = locations.length; index < len; ++index) {
+    var mkr, index;
+    for(index = 0; index < locations.length; ++index) {
         mkr = new google.maps.Marker({
             position: locations[index],
             map: map
