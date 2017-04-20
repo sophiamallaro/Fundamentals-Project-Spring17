@@ -3,11 +3,9 @@
  */
 
 var atl = {lat: 33.6407, lng: -84.4277};
-var sfo = {lat: 37.7749, lng: -122.4194};
+var sfo = {lat: 37.61522, lng: -122.38998};
 
-var center = {lat: 39.8282, lng: -98.5795};
-
-var SFOmarker, ATLmarker;
+var center = calcCenter([atl, sfo]);
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -15,19 +13,11 @@ function initMap() {
         center: center
     });
 
-    ATLmarker = new google.maps.Marker({
-        map: map,
-        position: atl
-    });
-
-    SFOmarker = new google.maps.Marker({
-        map: map,
-        position: sfo
-    });
-
     var flightPlanCoordinates = [
         atl, sfo
     ];
+
+    addMkrs(flightPlanCoordinates, map);
 
     var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,

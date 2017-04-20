@@ -5,10 +5,7 @@
 var jfk = {lat: 40.6413, lng: -73.7781};
 var sfo = {lat: 37.7749, lng: -122.4194};
 
-
-var center = {lat: 39.8282, lng: -98.5795};
-
-var JFKmarker, SFOmarker;
+var center = calcCenter([jfk, sfo]);
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -16,19 +13,11 @@ function initMap() {
         center: center
     });
 
-    JFKmarker = new google.maps.Marker({
-        map: map,
-        position: jfk
-    });
-
-    SFOmarker = new google.maps.Marker({
-        map: map,
-        position: sfo
-    });
-
     var flightPlanCoordinates = [
         jfk, sfo
     ];
+
+    addMkrs(flightPlanCoordinates, map);
 
     var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,
