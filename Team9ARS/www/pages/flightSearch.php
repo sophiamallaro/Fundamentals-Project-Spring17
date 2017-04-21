@@ -49,6 +49,8 @@ sec_session_start();
                             echo '<td>'.$row['atime'].'</td>';
                             echo '<td>'.$row['ePrice'].'</td>';
                             echo '<td>'.$row['fcPrice'].'</td>';
+							echo '<td><button type="submit" name ="number" value="'.$row['number'].'">Book Flight '.$row['number'].'</button></td>';
+							echo '<td><a href="../index.php">/View Map</a></td>';
                             echo '</tr>';
                         }
                         // echo "</select>";
@@ -61,8 +63,6 @@ sec_session_start();
 
 	?>
 	</table><br>
-	Flight Number: <input type="text" name="number" />
-    <input type="submit" value="Book" />
     </form>
 </body>
 </html>

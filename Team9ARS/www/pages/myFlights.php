@@ -32,7 +32,6 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
 	<?php
 
         $query1 = "SELECT * FROM bookings a, flight b WHERE a.accountID=\"" . htmlentities($_SESSION['username']) . "\" and b.number = a.flightID";
-		echo $query1;
 		$stmt = $mysqli->query($query1);
             if ($stmt->num_rows > 0) {
                         while($row = $stmt->fetch_assoc()) {
