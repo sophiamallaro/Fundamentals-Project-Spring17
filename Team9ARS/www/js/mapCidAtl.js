@@ -5,19 +5,29 @@
 var cid = {lat: 41.8864, lng: -91.70697};
 var atl = {lat: 33.6407, lng: -84.4277};
 
-var center = calcCenter([cid,atl]);
+var center = {lat: 39.8282, lng: -98.5795};
+
+var CIDmarker, ATLmarker;
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
+        zoom: 5,
         center: center
+    });
+
+    CIDmarker = new google.maps.Marker({
+        map: map,
+        position: cid
+    });
+
+    ATLmarker = new google.maps.Marker({
+        map: map,
+        position: atl
     });
 
     var flightPlanCoordinates = [
         cid, atl
     ];
-
-    addMkrs(flightPlanCoordinates, map);
 
     var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,

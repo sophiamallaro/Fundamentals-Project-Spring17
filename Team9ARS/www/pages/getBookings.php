@@ -8,7 +8,7 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Flights</title>
+    <title>Bookings</title>
     <style>
         body {background-color: powderblue;text-align: center;line-height: 1.4;}
     </style>
@@ -16,36 +16,22 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
     <title>Create Account</title>
     <div style='float: right;'><a href="../index.php">Home</a></div>
 </head>
-<body>
-    <h1>My Flights</h1>
-	
+<body>	
 	<table width="1000">
     <tr>
-        <td>Flight Number</td>
-		<td>Departure</td>
-		<td>Arrival</td>
-		<td>Departure Date</td>
-        <td>Arrival Date</td>
-        <td>Departure Time</td>
-        <td>Arrival Time</td>
 		<td>Ticket Holder</td>
+		<td>Class Type</td>
 		<td>Cancelled?</td>
     </tr>
 	<?php
 
-        $query1 = "SELECT * FROM bookings a, flight b WHERE a.accountID=\"" . htmlentities($_SESSION['username']) . "\" and b.number = a.flightID";
+        $query1 = "SELECT * FROM bookings WHERE flightID ='".$_POST['num']."'";
 		$stmt = $mysqli->query($query1);
             if ($stmt->num_rows > 0) {
                         while($row = $stmt->fetch_assoc()) {
                             echo '<tr>';
-                            echo '<td>'.$row['number'].'</td>';
-							echo '<td>'.$row['source'].'</td>';
-							echo '<td>'.$row['destination'].'</td>';
-                            echo '<td>'.$row['ddate'].'</td>';
-                            echo '<td>'.$row['adate'].'</td>';
-                            echo '<td>'.$row['dtime'].'</td>';
-                            echo '<td>'.$row['atime'].'</td>';
 							echo '<td>'.$row['name'].'</td>';
+							echo '<td>'.$row['class'].'</td>';
 							if ($row['Cancellation'] == 1)
 							{
 								echo '<td>Yes</td>';
@@ -57,11 +43,10 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
                             echo '</tr>';
                         }
             } else {
-                echo 'No Available Flights';
+                echo 'No Available bookings';
             }
 
 	?>
-	</table><br>
-	
+	</table><br>	
 </body>
 </html>

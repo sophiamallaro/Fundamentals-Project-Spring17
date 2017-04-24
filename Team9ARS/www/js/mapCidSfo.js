@@ -5,7 +5,9 @@
 var cid = {lat: 41.8864, lng: -91.70697};
 var sfo = {lat: 37.7749, lng: -122.4194};
 
-var center = calcCenter([cid,sfo]);
+var center = {lat: 39.8282, lng: -98.5795};
+
+var CIDmarker, SFOmarker;
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -13,11 +15,19 @@ function initMap() {
         center: center
     });
 
+    CIDmarker = new google.maps.Marker({
+        map: map,
+        position: cid
+    });
+
+    SFOmarker = new google.maps.Marker({
+        map: map,
+        position: sfo
+    });
+
     var flightPlanCoordinates = [
         cid, sfo
     ];
-
-    addMkrs(flightPlanCoordinates, map);
 
     var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,

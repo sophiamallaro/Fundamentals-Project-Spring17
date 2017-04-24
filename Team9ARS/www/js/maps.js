@@ -52,6 +52,7 @@ function generateFlightPlan(locations) {
     for (index = 0; index < locations.length; ++index) {
         flightPlanCoordinates.push(airports[locations[index]]);
      }
+    console.log(flightPlanCoordinates);
     initMap(flightPlanCoordinates, 2);
     return flightPlanCoordinates;
 }
