@@ -34,7 +34,12 @@ sec_session_start();
         <option value="SFO">SFO</option>
     </select><br>
     Departure Date: <input type="date" name="ddate">
-    Arrival Date: <input type="date" name="adate">
+	Sort Results: <select name="sort">
+        <option value="0">Price</option>
+        <option value="1">Departure Time</option>
+        <option value="2">Arrival Time</option>
+    </select><br>
+	
     <input type="submit" value="Find Flights"><br>
 </body>
 

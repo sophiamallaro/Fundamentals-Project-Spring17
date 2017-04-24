@@ -18,7 +18,6 @@ sec_session_start();
 </head>
 <body>
     <h1>Results</h1>
-
 	<form action="booking.php" method="post"
 	name="aircraft_form" id="aircraft_form">
     <table width="1000">
@@ -35,8 +34,24 @@ sec_session_start();
 	    $source = $_POST['source'];
 	    $destination = $_POST['destination'];
         $insertddate = date('Y-m-d', strtotime($_POST['ddate']));
-        $insertadate = date('Y-m-d', strtotime($_POST['adate']));
-        $instruction = "SELECT * FROM flight where source='".$source."' AND destination='".$destination."' AND ddate ='".$insertddate."' AND adate='".$insertadate."'";
+		$sort = $_POST['sort'];
+		
+		if($sort == 0) {
+			//$in = "SELECT * FROM flight ORDER BY ePrice";
+			$instruction = "SELECT * FROM flight where source='".$source."' AND destination='".$destination."' AND ddate ='".$insertddate."' ORDER BY ePrice";
+		} else if($sort == 1) {
+			$instruction = "SELECT * FROM flight where source='".$source."' AND destination='".$destination."' AND ddate ='".$insertddate."' ORDER BY dTime";
+			//$in = "SELECT * FROM flight ORDER BY dtime";
+			//$s = $mysqli->prepare($in);
+			//$s->execute();
+		} else {
+			$instruction = "SELECT * FROM flight where source='".$source."' AND destination='".$destination."' AND ddate ='".$insertddate."' ORDER BY aTime";
+			//$in = "SELECT * FROM flight ORDER BY atime";
+			//$s = $mysqli->prepare($in);
+			//$s->execute();
+		}
+		
+        //$instruction = "SELECT * FROM flight where source='".$source."' AND destination='".$destination."' AND ddate ='".$insertddate."'";
 		$stmt = $mysqli->query($instruction);
         if($stmt) {
             if ($stmt->num_rows > 0) {
@@ -58,7 +73,7 @@ sec_session_start();
                 echo 'No Available Flights';
             }
         } else {
-                echo 'STATEMENT NOT PREPARING';
+                echo 'Error';
         }
 
 	?>
