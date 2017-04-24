@@ -70,7 +70,46 @@ sec_session_start();
                             echo '<td>'.$row['ePrice'].'</td>';
                             echo '<td>'.$row['fcPrice'].'</td>';
 							echo '<td><button type="submit" name ="number" value="'.$row['number'].'">Book Flight '.$row['number'].'</button></td>';
-							echo '<td><a href="../index.php">/View Map</a></td>';
+							if (($source=='CID' or $destination =='CID') and ($source=='ATL' or $destination=='ATL'))
+							{
+								echo '<td><a href="mapCidAtl.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='JFK' or $destination=='JFK'))
+							{
+								echo '<td><a href="mapAtlJfk.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapAtlOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapAtlSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='JFK' or $destination=='JFK'))
+							{
+								echo '<td><a href="mapCidJfk.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapCidOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapCidSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='JFK' or $destination =='JFK') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapJfkOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='JFK' or $destination =='JFK') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapJfkSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ORD' or $destination =='ORD') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapOrdSfo.html" target="_blank">View Map</a></td>';
+							}
                             echo '</tr>';
                         }
                         // echo "</select>";
@@ -134,7 +173,46 @@ sec_session_start();
                             echo '<td>'.$row['ePrice'].'</td>';
                             echo '<td>'.$row['fcPrice'].'</td>';
 							echo '<td><button type="submit" name ="number" value="'.$row['number'].'">Book Flight '.$row['number'].'</button></td>';
-							echo '<td><a href="../index.php">/View Map</a></td>';
+							if (($source=='CID' or $destination =='CID') and ($source=='ATL' or $destination=='ATL'))
+							{
+								echo '<td><a href="mapCidAtl.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='JFK' or $destination=='JFK'))
+							{
+								echo '<td><a href="mapAtlJfk.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapAtlOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapAtlSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='JFK' or $destination=='JFK'))
+							{
+								echo '<td><a href="mapCidJfk.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapCidOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapCidSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='JFK' or $destination =='JFK') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapJfkOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='JFK' or $destination =='JFK') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapJfkSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ORD' or $destination =='ORD') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapOrdSfo.html" target="_blank">View Map</a></td>';
+							}
                             echo '</tr>';
                         }
                         // echo "</select>";
@@ -191,7 +269,47 @@ sec_session_start();
                             echo '<td>'.$row['ePrice'].'</td>';
                             echo '<td>'.$row['fcPrice'].'</td>';
 							echo '<td><button type="submit" name ="number" value="'.$row['number'].'">Book Flight '.$row['number'].'</button></td>';
-							echo '<td><a href="../index.php">/View Map</a></td>';
+							if (($source=='CID' or $destination =='CID') and ($source=='ATL' or $destination=='ATL'))
+							{
+								echo '<td><a href="mapCidAtl.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='JFK' or $destination=='JFK'))
+							{
+								echo '<td><a href="mapAtlJfk.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapAtlOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ATL' or $destination =='ATL') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapAtlSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='JFK' or $destination=='JFK'))
+							{
+								echo '<td><a href="mapCidJfk.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapCidOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='CID' or $destination =='CID') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapCidSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='JFK' or $destination =='JFK') and ($source=='ORD' or $destination=='ORD'))
+							{
+								echo '<td><a href="mapJfkOrd.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='JFK' or $destination =='JFK') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapJfkSfo.html" target="_blank">View Map</a></td>';
+							}
+							else if(($source=='ORD' or $destination =='ORD') and ($source=='SFO' or $destination=='SFO'))
+							{
+								echo '<td><a href="mapOrdSfo.html" target="_blank">View Map</a></td>';
+							}
+							
                             echo '</tr>';
                         }
                         // echo "</select>";

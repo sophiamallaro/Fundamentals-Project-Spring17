@@ -28,6 +28,8 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
         <td>Arrival Date</td>
         <td>Departure Time</td>
         <td>Arrival Time</td>
+		<td>Ticket Holder</td>
+		<td>Cancelled?</td>
     </tr>
 	<?php
 
@@ -43,6 +45,15 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
                             echo '<td>'.$row['adate'].'</td>';
                             echo '<td>'.$row['dtime'].'</td>';
                             echo '<td>'.$row['atime'].'</td>';
+							echo '<td>'.$row['name'].'</td>';
+							if ($row['Cancellation'] == 1)
+							{
+								echo '<td>Yes</td>';
+							}
+							else
+							{
+								echo '<td> </td>';
+							}
                             echo '</tr>';
                         }
             } else {

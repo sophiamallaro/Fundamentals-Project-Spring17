@@ -10,13 +10,12 @@
     <div style='float: right;'><a href="managerTools.html">Back</a></div>
 </head>
 <body>
+	<form action="../includes/cancelBooking.php" method="post">
     <h1>Reservation Tools</h1>
-    Passenger First name: <input type="text" name="fname"><br>
-    Passenger Last name: <input type="text" name="lname"><br>
-    Flight number: <input type="text" number="num"><br>
-    <input type="submit" value="Make Reservation">
-    <input type="submit" value="Cancel Reservation">
-    <input type="submit" value="Modify Reservation"><br>
-
+    Email: <input type="text" name="email"><br>
+    Passenger Name: <input type="text" name="name"><br>
+    Flight number: <input type="text" name="num"><br>
+    <input type="submit" value="Cancel Reservation"><br>
+	</form>
 </body>
 </html>

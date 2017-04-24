@@ -5,19 +5,29 @@
 var atl = {lat: 33.6407, lng: -84.4277};
 var jfk = {lat: 40.6413, lng: -73.7781};
 
-var center = calcCenter([atl,jfk]);
+var center = {lat: 39.8282, lng: -98.5795};
+
+var JFKmarker, ATLmarker;
 
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
+        zoom: 5,
         center: center
+    });
+
+    ATLmarker = new google.maps.Marker({
+        map: map,
+        position: atl
+    });
+
+    JFKmarker = new google.maps.Marker({
+        map: map,
+        position: jfk
     });
 
     var flightPlanCoordinates = [
         atl, jfk
     ];
-
-    addMkrs(flightPlanCoordinates, map);
 
     var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,
