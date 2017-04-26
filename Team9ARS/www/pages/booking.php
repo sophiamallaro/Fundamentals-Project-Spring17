@@ -20,10 +20,16 @@ $_SESSION['flightNum'] = $_POST['number'];
     <form action="../includes/process_booking.php" method="post" name="test_form">
     <h1>Book Your Flight</h1>
     Name: <input type="text" name="name"><br>
-     <select name="class">
+	<?php
+			$sql = "SELECT fcPrice, ePrice FROM flight WHERE number ='".$_SESSION['flightNum']."' LIMIT 1";
+			$value = $mysqli->query($sql);
+			$row = $value->fetch_assoc();
+			echo "Economy Price: $".$row['ePrice']." First Class Price: $".$row['fcPrice']."<br>";
+	?>
+     <select name="class">		
         <option value="Economy">Economy</option>
         <option value="First Class">First Class</option>
-        </select><br>
+     </select><br>
      Credit Card Number: <input type="text" name="creditcard"><br>
      <input type="submit" value="Book"><br>
      </form>
