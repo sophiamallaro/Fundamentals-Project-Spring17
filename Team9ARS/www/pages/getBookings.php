@@ -39,13 +39,17 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
 							else
 							{
 								echo '<td> </td>';
+								echo'<td><form action="checkIn.php" method="post">
+									<button type="submit" name ="number" value="'.$_POST['num'].'">Check In Passenger</button>
+									<input type="hidden" name="name" value="'.$row['name'].'">
+									<input type="hidden" name="email" value="'.$row['accountID'].'">
+								</form></td>';
 							}
                             echo '</tr>';
                         }
             } else {
                 echo 'No Available bookings';
             }
-
 	?>
 	</table><br>	
 </body>
