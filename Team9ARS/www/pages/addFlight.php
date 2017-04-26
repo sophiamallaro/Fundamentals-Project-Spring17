@@ -21,7 +21,6 @@ include_once '../includes/functions.php';
         }
     ?>
 <form action="../includes/process_addFlight.php" method="post" name="test_form">
-    Flight Number: <input type="text" name="number"><br>
     Departure City: <select name="source">
     <option value="ATL">ATL</option>
     <option value="CID">CID</option>

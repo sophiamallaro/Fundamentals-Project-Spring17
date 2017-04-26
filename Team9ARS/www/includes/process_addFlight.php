@@ -6,7 +6,6 @@ sec_session_start(); // Our custom secure way of starting a PHP session.
 
 ini_set("date.timezone", "America/New_York");
 
-$number = $_POST['number'];
 $source = $_POST['source'];
 $destination = $_POST['destination'];
 $insertddate = date('Y-m-d', strtotime($_POST['ddate']));
@@ -16,7 +15,7 @@ $insertatime = $_POST['atime'];
 $frequency = $_POST['frequency'];
 $fcPrice = $_POST['fcPrice'];
 $ePrice = $_POST['ePrice'];
-$fields = array('number', 'source', 'destination', 'ddate', 'adate', 'dtime', 'fcPrice', 'ePrice');
+$fields = array('source', 'destination', 'ddate', 'adate', 'dtime', 'fcPrice', 'ePrice');
 $edate = date('Y-m-d', strtotime($_POST['edate']));
 $error = false;
 $error_msg = "";
@@ -38,18 +37,17 @@ if($insertddate > $insertadate) {
 }
 if(empty($error_msg)) {
 	$aircraftID = $_POST['aircraftID'];
-	$stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice, aircraftID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-   		 $stmt->bind_param('sssssssiiii', $number, $source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $aircraftID);
+	$stmt = $mysqli->prepare("INSERT INTO flight (source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice, aircraftID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+   		 $stmt->bind_param('ssssssiiii', $source, $destination, $insertddate, $insertadate, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $aircraftID);
    		 $stmt->execute();
 	if($frequency == 1) {
-		echo "F1"; 
 		$insertddate2 = $insertddate;
 		$insertadate2 = $insertadate;
 		do {
 				$insertddate2 = date('Y-m-d', strtotime($insertddate2 . '+7 days'));
 				$insertadate2 = date('Y-m-d', strtotime($insertadate2 . '+7 days'));
-				$stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice, aircraftID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				$stmt->bind_param('sssssssiiii', $number, $source, $destination, $insertddate2, $insertadate2, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $aircraftID);
+				$stmt = $mysqli->prepare("INSERT INTO flight (source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice, aircraftID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				$stmt->bind_param('ssssssiiii', $source, $destination, $insertddate2, $insertadate2, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $aircraftID);
 				$stmt->execute();
          	} while ( $insertddate2 < $edate);
 	} else if ($frequency == 2){
@@ -58,8 +56,8 @@ if(empty($error_msg)) {
 		do {
 				$insertddate2 = date('Y-m-d', strtotime($insertddate2 . '+1 month'));
 				$insertadate2 = date('Y-m-d', strtotime($insertadate2 . '+1 month'));
-				$stmt = $mysqli->prepare("INSERT INTO flight (number, source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice, aircraftID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				$stmt->bind_param('sssssssiiii', $number, $source, $destination, $insertddate2, $insertadate2, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $aircraftID);
+				$stmt = $mysqli->prepare("INSERT INTO flight (source, destination, ddate, adate, dtime, atime, frequency, fcPrice, ePrice, aircraftID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				$stmt->bind_param('ssssssiiii', $source, $destination, $insertddate2, $insertadate2, $insertdtime, $insertatime, $frequency, $fcPrice, $ePrice, $aircraftID);
 				$stmt->execute();
          	} while( $insertddate2 < $edate);
 	}
